@@ -42,3 +42,8 @@ sudo chown -R git:git /home/git/repositories/
 
 sudo -u gitlab -H git clone git@localhost:gitolite-admin.git /tmp/gitolite-admin
 rm -rf /tmp/gitolite-admin
+
+git config --global user.email "brian.morris.personal@gmail.com"
+git config --global user.name "Brian Morris"
+
+
