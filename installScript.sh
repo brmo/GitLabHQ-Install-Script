@@ -1,15 +1,16 @@
 #!/bin/sh
 
-apt-get update
-apt-get upgrade
+sudo apt-get update
+sudo apt-get upgrade
 
-apt-get install -y git-core wget curl gcc checkinstall libxml2-dev libxslt-dev sqlite3 libsqlite3-dev libcurl4-openssl-dev libreadline5-dev libc6-dev libssl-dev libmysql++-dev make build-essential zlib1g-dev libicu-dev redis-server openssh-server git-core python-dev python-pip
+sudo apt-get install -y git-core wget curl gcc checkinstall libxml2-dev libxslt-dev sqlite3 libsqlite3-dev libcurl4-openssl-dev libreadline5-dev libc6-dev libssl-dev libmysql++-dev make build-essential zlib1g-dev libicu-dev redis-server openssh-server python-dev python-pip p7zip-full s3cmd
 
+cd /tmp
 wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
 tar xfvz ruby-1.9.3-p194.tar.gz
 cd ruby-1.9.3-p194
 ./configure
-make
+sudo make
 sudo make install
 
 sudo adduser \
@@ -39,9 +40,6 @@ sudo -u git -H sh -c "PATH=/home/git/bin:$PATH; gl-setup -q /home/git/gitlabhq.p
 
 sudo chmod -R g+rwX /home/git/repositories/
 sudo chown -R git:git /home/git/repositories/
-
-sudo -u gitlab -H git clone git@localhost:gitolite-admin.git /tmp/gitolite-admin
-rm -rf /tmp/gitolite-admin
 
 git config --global user.email "brian.morris.personal@gmail.com"
 git config --global user.name "Brian Morris"
