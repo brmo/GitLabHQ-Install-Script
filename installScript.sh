@@ -16,10 +16,10 @@ sudo make install
 sudo adduser --system --shell /bin/sh --gecos 'git version control' --group --disabled-password --home /home/git git
 sudo adduser --disabled-login --gecos 'gitlab system' gitlabhq
 sudo usermod -a -G git gitlabhq
-sudo touch /home/gitlabhq/.ssh/authorized_keys
-sudo -H ssh-keygen -q -N '' -t rsa -f /home/gitlabhq/.ssh/authorized_keys
+ssh-keygen -q -N '' -t rsa -f /home/gitlabhq/.ssh/authorized_keys
 sudo -H -u gitlabhq ssh-keygen -q -N '' -t rsa -f /home/gitlabhq/.ssh/id_rsa
 sudo service ssh restart
+ssh -q -o "StrictHostKeyChecking no" gitlabhq@localhost
 
 cd /home/git
 sudo -H -u git git clone git://github.com/gitlabhq/gitolite /home/git/gitolite
@@ -36,8 +36,5 @@ sudo chown -R git:git /home/git/repositories/
 
 git config --global user.email "brian.morris.personal@gmail.com"
 git config --global user.name "Brian Morris"
-
-ssh -q gitlabhq@localhost
-logout
 
 
