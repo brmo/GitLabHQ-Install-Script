@@ -13,20 +13,13 @@ cd ruby-1.9.3-p194
 sudo make
 sudo make install
 
-sudo adduser \
-  --system \
-  --shell /bin/sh \
-  --gecos 'git version control' \
-  --group \
-  --disabled-password \
-  --home /home/git \
-  git
-
+sudo adduser --system --shell /bin/sh --gecos 'git version control' --group --disabled-password --home /home/git git
 sudo adduser --disabled-login --gecos 'gitlab system' gitlabhq
 sudo usermod -a -G git gitlabhq
 sudo touch /home/gitlabhq/.ssh/authorized_keys
 sudo -H ssh-keygen -q -N '' -t rsa -f /home/gitlabhq/.ssh/authorized_keys
 sudo -H -u gitlabhq ssh-keygen -q -N '' -t rsa -f /home/gitlabhq/.ssh/id_rsa
+sudo service ssh restart
 
 cd /home/git
 sudo -H -u git git clone git://github.com/gitlabhq/gitolite /home/git/gitolite
