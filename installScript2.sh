@@ -40,7 +40,7 @@ sudo -u git -H sh -c "PATH=/home/git/bin:$PATH; gl-setup -q /home/git/gitlabhq.p
 sudo chmod -R g+rwX /home/git/repositories/
 sudo chown -R git:git /home/git/repositories/
 
-sudo -u gitlab -H git clone git@localhost:gitolite-admin.git /tmp/gitolite-admin
+sudo -u gitlabhq -H git clone git@localhost:gitolite-admin.git /tmp/gitolite-admin
 sudo rm -rf /tmp/gitolite-admin
 
 sudo gem install charlock_holmes
