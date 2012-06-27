@@ -32,10 +32,10 @@ sudo -H -u git git clone git://github.com/gitlabhq/gitolite /home/git/gitolite
 
 sudo -u git -H sh -c "PATH=/home/git/bin:$PATH; /home/git/gitolite/src/gl-system-install"
 sudo cp /home/gitlabhq/.ssh/id_rsa.pub /home/git/gitlabhq.pub
-sudo chmod 777 /home/git/gitlab.pub
+sudo chmod 777 /home/git/gitlabhq.pub
 
 sudo -u git -H sed -i 's/0077/0007/g' /home/git/share/gitolite/conf/example.gitolite.rc
-sudo -u git -H sh -c "PATH=/home/git/bin:$PATH; gl-setup -q /home/git/gitlab.pub"
+sudo -u git -H sh -c "PATH=/home/git/bin:$PATH; gl-setup -q /home/git/gitlabhq.pub"
 
 sudo chmod -R g+rwX /home/git/repositories/
 sudo chown -R git:git /home/git/repositories/
