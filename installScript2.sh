@@ -1,6 +1,6 @@
 #!/bin/sh
 
-sudo apt-get update && sudo apt-get upgrade && sudo apt-get install -y git git-core wget curl gcc checkinstall libxml2-dev libxslt-dev sqlite3 libsqlite3-dev libcurl4-openssl-dev libreadline-gplv2-dev libc6-dev libssl-dev libmysql++-dev make build-essential zlib1g-dev libicu-dev redis-server openssh-server python-dev python-pip libyaml-dev htop nginx p7zip-full
+sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get install -y git git-core wget curl gcc checkinstall libxml2-dev libxslt-dev sqlite3 libsqlite3-dev libcurl4-openssl-dev libreadline-gplv2-dev libc6-dev libssl-dev libmysql++-dev make build-essential zlib1g-dev libicu-dev redis-server openssh-server python-dev python-pip libyaml-dev htop nginx p7zip-full
 
 wget http://ftp.ruby-lang.org/pub/ruby/1.9/ruby-1.9.3-p194.tar.gz
 tar xfvz ruby-1.9.3-p194.tar.gz
@@ -21,7 +21,6 @@ sudo adduser \
 sudo adduser --disabled-login --gecos 'gitlab system' gitlabhq
 
 sudo usermod -a -G git gitlabhq
-sudo usermod -a -G git `eval whoami` 
 
 sudo -H -u gitlabhq ssh-keygen -q -N '' -t rsa -f /home/gitlabhq/.ssh/id_rsa
 
@@ -38,22 +37,4 @@ sudo -u git -H sh -c "PATH=/home/git/bin:$PATH; gl-setup -q /home/git/gitlabhq.p
 sudo chmod -R g+rwX /home/git/repositories/
 sudo chown -R git:git /home/git/repositories/
 
-sudo -u gitlabhq -H git clone git@localhost:gitolite-admin.git /tmp/gitolite-admin
-sudo rm -rf /tmp/gitolite-admin
-
-sudo gem install charlock_holmes
-sudo pip install pygments
-sudo gem install bundler
-cd /home/gitlabhq
-sudo -H -u gitlabhq git clone git://github.com/gitlabhq/gitlabhq.git gitlabhq
-cd gitlabhq
-
-sudo -u gitlabhq cp config/gitlab.yml.example config/gitlab.yml
-
-sudo -u gitlabhq cp config/database.yml.sqlite config/database.yml
-
-sudo -u gitlabhq -H bundle install --without development test --deployment
-
-sudo -u gitlabhq bundle exec rake gitlab:app:setup RAILS_ENV=production
-
-sudo -u gitlabhq bundle exec rake gitlab:app:status RAILS_ENV=production
+logout 
