@@ -24,6 +24,7 @@ sudo adduser \
 sudo adduser --disabled-login --gecos 'gitlab system' gitlabhq
 
 sudo usermod -a -G git gitlabhq
+sudo usermod -a -G git `eval whoami` 
 
 sudo -H -u gitlabhq ssh-keygen -q -N '' -t rsa -f /home/gitlabhq/.ssh/id_rsa
 
