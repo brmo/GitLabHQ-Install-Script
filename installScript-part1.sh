@@ -36,5 +36,3 @@ sudo -u git -H sh -c "PATH=/home/git/bin:$PATH; gl-setup -q /home/git/gitlabhq.p
 
 sudo chmod -R g+rwX /home/git/repositories/
 sudo chown -R git:git /home/git/repositories/
-
-logout 
