@@ -3,7 +3,7 @@ server unix:/home/gitlabhq/gitlabhq/tmp/sockets/gitlab.socket;
 }
 
 server {
-listen 50.112.116.163:80;
+listen 80;
 server_name gitlab.sparqstudios.com;
 root /home/gitlabhq/gitlabhq/public;
 
